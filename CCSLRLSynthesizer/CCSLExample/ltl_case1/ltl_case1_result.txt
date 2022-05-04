@@ -1,0 +1,16 @@
+SKETCH version 1.6.9
+Benchmark = /Users/huming/Desktop/sketch/ltl_case1_result.sk
+[SKETCH] DONE
+Total time = 70981
+
+a < b
+c irrelevant a
+d irrelevant a
+b irrelevant c
+b irrelevant d
+c ~< d
+
+and_b_a == exp_and_b_a
+and_b_a == left_0
+left_0 is sub-clock of c
+exp_and_b_a = a * b

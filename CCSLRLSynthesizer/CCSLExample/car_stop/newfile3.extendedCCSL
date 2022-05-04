@@ -1,0 +1,41 @@
+/*
+ * CCSL specification
+ * @author:  huming
+ * date :  星期二 十月 16 2018  01:27:22 CST 
+ */
+ClockConstraintSystem newfile {
+    imports {
+        // import statements
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0; 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
+
+    }
+    entryBlock main
+    Block main {
+    	Clock r
+    	Clock g
+    	Clock y
+    	Clock isPeople
+    	Clock isCar
+    	Clock Go
+    	Clock Stop
+    	Clock toGo
+    	Clock toStop
+    	Expression Glob1 = Union(Clock1->toGo,Clock2->toStop)
+    	Expression Glob2 = Union(Clock1->Go,Clock2->Stop)
+		Expression crossStop = Union(Clock1->r,Clock2->y)
+		Expression frontStop = Union(Clock1->isPeople,Clock2->isCar)
+		Expression needStop =  Union(Clock1->crossStop,Clock2->frontStop)
+		Expression exp_or_toGo_needStop =  Union(Clock1->toGo,Clock2->needStop)
+		Expression exp_or_needStop_stop =  Union(Clock1->Stop,Clock2->needStop)
+		Relation r_glb[Coincides](Clock1->Glob1,Clock2->Glob2)
+		Relation r0[Exclusion](Clock1->r,Clock2->g)
+		Relation r1[Exclusion](Clock1->y,Clock2->g)
+		Relation r2[Exclusion](Clock1->r,Clock2->y)
+		Relation r3[Exclusion](Clock1->Stop,Clock2->Go)
+		Relation r4[Exclusion](Clock1->toStop,Clock2->toGo)
+		Relation r5[SubClock](LeftClock->Go,RightClock->exp_or_toGo_needStop)
+		Relation r6[SubClock](LeftClock->exp_or_needStop_stop,RightClock->toStop)
+		Relation r7[SubClock](LeftClock->toGo,RightClock->Go)
+	}
+}

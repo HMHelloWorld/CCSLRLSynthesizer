@@ -1,0 +1,136 @@
+<CCSLConfigure>
+    <relations>
+        <relation type='1' leftClock="Iq_init" rightClock="e_q_init"/>
+        <relation type='2' leftClock="q_init" rightClock="Iq_init"/>
+        <relation type='0' leftClock="Iq_init" rightClock="e_Trans_init_1"/>
+        <relation type='3' leftClock="q_init" rightClock="q_S1"/>
+        <relation type='3' leftClock="q_init" rightClock="q_S2"/>
+        <relation type='3' leftClock="q_init" rightClock="q_S3"/>
+        <relation type='3' leftClock="q_init" rightClock="q_S4"/>
+        <relation type='3' leftClock="q_init" rightClock="q_S5"/>
+        <relation type='3' leftClock="q_init" rightClock="q_S6"/>
+        <relation type='1' leftClock="Iq_S1" rightClock="q_S1"/>
+        <relation type='2' leftClock="q_S1" rightClock="e_q_S1"/>
+        <relation type='0' leftClock="Iq_S1" rightClock="e_Trans_S1_2"/>
+        <relation type='3' leftClock="q_S1" rightClock="q_S2"/>
+        <relation type='3' leftClock="q_S1" rightClock="q_S3"/>
+        <relation type='3' leftClock="q_S1" rightClock="q_S4"/>
+        <relation type='3' leftClock="q_S1" rightClock="q_S5"/>
+        <relation type='3' leftClock="q_S1" rightClock="q_S6"/>
+        <relation type='1' leftClock="Iq_S2" rightClock="q_S2"/>
+        <relation type='2' leftClock="q_S2" rightClock="e_q_S2"/>
+        <relation type='0' leftClock="Iq_S2" rightClock="e_Trans_S2_1"/>
+        <relation type='3' leftClock="q_S2" rightClock="q_S3"/>
+        <relation type='3' leftClock="q_S2" rightClock="q_S4"/>
+        <relation type='3' leftClock="q_S2" rightClock="q_S5"/>
+        <relation type='3' leftClock="q_S2" rightClock="q_S6"/>
+        <relation type='1' leftClock="Iq_S3" rightClock="q_S3"/>
+        <relation type='2' leftClock="q_S3" rightClock="e_q_S3"/>
+        <relation type='0' leftClock="Iq_S3" rightClock="e_Trans_S3_2"/>
+        <relation type='3' leftClock="q_S3" rightClock="q_S4"/>
+        <relation type='3' leftClock="q_S3" rightClock="q_S5"/>
+        <relation type='3' leftClock="q_S3" rightClock="q_S6"/>
+        <relation type='1' leftClock="Iq_S4" rightClock="q_S4"/>
+        <relation type='2' leftClock="q_S4" rightClock="e_q_S4"/>
+        <relation type='0' leftClock="Iq_S4" rightClock="e_Trans_S4_1"/>
+        <relation type='3' leftClock="q_S4" rightClock="q_S5"/>
+        <relation type='3' leftClock="q_S4" rightClock="q_S6"/>
+        <relation type='2' leftClock="Iq_S5" rightClock="q_S5"/>
+        <relation type='2' leftClock="q_S5" rightClock="e_q_S5"/>
+        <relation type='0' leftClock="Iq_S5" rightClock="e_Trans_S5_2"/>
+        <relation type='3' leftClock="q_S5" rightClock="q_S6"/>
+        <relation type='1' leftClock="Iq_S6" rightClock="q_S6"/>
+        <relation type='2' leftClock="q_S6" rightClock="e_q_S6"/>
+        <relation type='0' leftClock="Iq_S6" rightClock="e_Trans_S6_1"/>
+        <relation type='0' leftClock="e_Q_6" rightClock="global"/>
+        <relation type='0' leftClock="e_Trans_6" rightClock="global"/>
+        <relation type='0' leftClock="global" rightClock="glb0"/>
+        <relation type='0' leftClock="global" rightClock="glb1"/>
+        <relation type='0' leftClock="global" rightClock="glb2"/>
+        <relation type='3' leftClock="close" rightClock="closeLock"/>
+        <relation type='3' leftClock="open" rightClock="openLock"/>
+        <relation type='3' leftClock="extend" rightClock="extendLock"/>
+        <relation type='3' leftClock="retract" rightClock="retractLock"/>
+        <relation type='3' leftClock="down" rightClock="up"/>
+        <relation type='3' leftClock="closeAct" rightClock="openAct"/>
+        <relation type='3' leftClock="extendAct" rightClock="retractAct"/>
+    </relations>
+    <expressions>
+        <expression name="closeAct" type='0' leftClock="close" rightClock="closeLock" addition=""/>
+        <expression name="openAct" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="extendAct" type='0' leftClock="extend" rightClock="extendLock" addition=""/>
+        <expression name="retractAct" type='0' leftClock="retract" rightClock="retractLock" addition=""/>
+        <expression name="glb0" type='0' leftClock="down" rightClock="up" addition=""/>
+        <expression name="glb1" type='0' leftClock="closeAct" rightClock="openAct" addition=""/>
+        <expression name="glb2" type='0' leftClock="extendAct" rightClock="retractAct" addition=""/>
+        
+        <expression name="e_q_init" type='4' leftClock="q_init" addition="1"/>
+        <expression name="exp_and_down_extendLock" type='1' leftClock="extendLock" rightClock="down" addition=""/>
+        <expression name="exp_and_closeLock_and_down_extendLock" type='1' leftClock="exp_and_down_extendLock" rightClock="closeLock" addition=""/>
+        <expression name="e_trans_init_0" type='1' leftClock="exp_and_closeLock_and_down_extendLock" rightClock="q_init" addition=""/>
+        <expression name="e_trans_init_1" type='1' leftClock="exp_and_closeLock_and_down_extendLock" rightClock="q_S1" addition=""/>
+        <expression name="e_Trans_init_1" type='0' leftClock="e_trans_init_0" rightClock="e_trans_init_1" addition=""/>
+        <expression name="e_q_S1" type='4' leftClock="Iq_S1" addition="1"/>
+        <expression name="e_Q_1" type='0' leftClock="q_init" rightClock="q_S1" addition=""/>
+        <expression name="e_Trans_1" type='0' leftClock="Iq_init" rightClock="Iq_S1" addition=""/>
+        <expression name="exp_and_up_extendLock" type='1' leftClock="extendLock" rightClock="up" addition=""/>
+        
+        <expression name="exp_and_open_and_up_extendLock" type='1' leftClock="exp_and_up_extendLock" rightClock="open" addition=""/>
+        <expression name="e_trans_S1_0" type='1' leftClock="exp_and_open_and_up_extendLock" rightClock="q_init" addition=""/>
+        <expression name="exp_and_close_and_down_extendLock" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_or_and_open_and_up_extendLock_and_close_and_down_extendLock" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S1_1" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S1_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S1_2" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S1_2" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_q_S2" type='4' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Q_2" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_2" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_openLock_and_up_extendLock" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S2_0" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S2_1" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S2_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_q_S3" type='4' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Q_3" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_3" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_up_retract" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_openLock_and_up_retract" type='1' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S3_0" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_down_extend" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="openexp_or_and_up_retract_and_down_extendAct" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_or_and_down_extend_and_up_retract_openLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S3_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S3_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_openLock_and_down_extend" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S3_2" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S3_2" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_q_S4" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Q_4" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_4" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_up_retractLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_openLock_and_up_retractLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S4_0" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_down_retractLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_openLock_and_down_retractLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S4_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S4_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_q_S5" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Q_5" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_5" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_close_and_up_retractLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S5_0" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_open_and_down_retractLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_or_and_close_and_up_retractLock_and_open_and_down_retractLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S5_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S5_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S5_2" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S5_2" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_q_S6" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Q_6" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_6" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="exp_and_closeLock_and_up_retractLock" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S6_0" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_trans_S6_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+        <expression name="e_Trans_S6_1" type='0' leftClock="open" rightClock="openLock" addition=""/>
+    </expressions>
+</CCSLConfigure>

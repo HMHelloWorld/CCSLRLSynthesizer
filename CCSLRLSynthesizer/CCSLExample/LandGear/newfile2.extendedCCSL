@@ -1,0 +1,222 @@
+/*
+ * CCSL specification
+ * @author:  huming
+ * date :  星期二 十月 16 2018  01:27:22 CST
+ */
+ClockConstraintSystem newfile {
+    imports {
+        // import statements
+        import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0;
+        import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1;
+
+    }
+    entryBlock main
+    Block main {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        Expression closeAct = Union(Clock1->close,Clock2->closeLock)
+        Expression openAct = Union(Clock1->open,Clock2->openLock)
+        Expression extendAct = Union(Clock1->extend,Clock2->extendLock)
+        Expression retractAct = Union(Clock1->retract,Clock2->retractLock)
+        Expression glb0 = Union(Clock1->down,Clock2->up)
+        Expression glb1 = Union(Clock1->closeAct,Clock2->openAct)
+        Expression glb2 = Union(Clock1->extendAct,Clock2->retractAct)
+        
+        Expression e_q_init = DelayFor(DelayForClockToDelay -> q_init , DelayForClockForCounting -> q_init , DelayForDelay -> one)
+        Expression exp_and_down_extendLock = Intersection(Clock1 -> extendLock , Clock2 -> down)
+        Expression exp_and_closeLock_and_down_extendLock = Intersection(Clock1 -> exp_and_down_extendLock , Clock2 -> closeLock)
+        Expression e_trans_init_0 = Intersection(Clock1 -> exp_and_closeLock_and_down_extendLock , Clock2 -> q_init)
+        Expression e_trans_init_1 = Intersection(Clock1 -> exp_and_closeLock_and_down_extendLock , Clock2 -> q_S1)
+        Expression e_Trans_init_1 = Union(Clock1 -> e_trans_init_0 , Clock2 -> e_trans_init_1)
+        Expression e_q_S1 = DelayFor(DelayForClockToDelay -> Iq_S1 , DelayForClockForCounting -> Iq_S1 , DelayForDelay -> one)
+        Expression e_Q_1 = Union(Clock1 -> q_init , Clock2 -> q_S1)
+        Expression e_Trans_1 = Union(Clock1 -> Iq_init , Clock2 -> Iq_S1)
+        Expression exp_and_up_extendLock = Intersection(Clock1 -> extendLock , Clock2 -> up)
+Expression exp_and_open_and_up_extendLock = Intersection(Clock1 -> exp_and_up_extendLock , Clock2 -> open)
+Expression e_trans_S1_0 = Intersection(Clock1 -> exp_and_open_and_up_extendLock , Clock2 -> q_init)
+Expression exp_and_close_and_down_extendLock = Intersection(Clock1 -> exp_and_down_extendLock , Clock2 -> close)
+Expression exp_or_and_open_and_up_extendLock_and_close_and_down_extendLock = Union(Clock1 -> exp_and_open_and_up_extendLock , Clock2 -> exp_and_close_and_down_extendLock)
+Expression e_trans_S1_1 = Intersection(Clock1 -> exp_or_and_open_and_up_extendLock_and_close_and_down_extendLock , Clock2 -> q_S1)
+Expression e_Trans_S1_1 = Union(Clock1 -> e_trans_S1_0 , Clock2 -> e_trans_S1_1)
+Expression e_trans_S1_2 = Intersection(Clock1 -> exp_and_close_and_down_extendLock , Clock2 -> q_S2)
+Expression e_Trans_S1_2 = Union(Clock1 -> e_Trans_S1_1 , Clock2 -> e_trans_S1_2)
+Expression e_q_S2 = DelayFor(DelayForClockToDelay -> Iq_S2 , DelayForClockForCounting -> Iq_S2 , DelayForDelay -> one)
+Expression e_Q_2 = Union(Clock1 -> e_Q_1 , Clock2 -> q_S2)
+Expression e_Trans_2 = Union(Clock1 -> e_Trans_1 , Clock2 -> Iq_S2)
+Expression exp_and_openLock_and_up_extendLock = Intersection(Clock1 -> exp_and_up_extendLock , Clock2 -> openLock)
+Expression e_trans_S2_0 = Intersection(Clock1 -> exp_and_openLock_and_up_extendLock , Clock2 -> q_S1)
+Expression e_trans_S2_1 = Intersection(Clock1 -> exp_and_closeLock_and_down_extendLock , Clock2 -> q_S3)
+Expression e_Trans_S2_1 = Union(Clock1 -> e_trans_S2_0 , Clock2 -> e_trans_S2_1)
+Expression e_q_S3 = DelayFor(DelayForClockToDelay -> Iq_S3 , DelayForClockForCounting -> Iq_S3 , DelayForDelay -> one)
+Expression e_Q_3 = Union(Clock1 -> e_Q_2 , Clock2 -> q_S3)
+Expression e_Trans_3 = Union(Clock1 -> e_Trans_2 , Clock2 -> Iq_S3)
+Expression exp_and_up_retract = Intersection(Clock1 -> retract , Clock2 -> up)
+Expression exp_and_openLock_and_up_retract = Intersection(Clock1 -> exp_and_up_retract , Clock2 -> openLock)
+Expression e_trans_S3_0 = Intersection(Clock1 -> exp_and_openLock_and_up_retract , Clock2 -> q_S2)
+Expression exp_and_down_extend = Intersection(Clock1 -> extend , Clock2 -> down)
+Expression exp_or_and_up_retract_and_down_extend = Union(Clock1 -> exp_and_up_retract , Clock2 -> exp_and_down_extend)
+Expression exp_and_or_and_down_extend_and_up_retract_openLock = Intersection(Clock1 -> openLock , Clock2 -> exp_or_and_up_retract_and_down_extend)
+Expression e_trans_S3_1 = Intersection(Clock1 -> exp_and_or_and_down_extend_and_up_retract_openLock , Clock2 -> q_S3)
+Expression e_Trans_S3_1 = Union(Clock1 -> e_trans_S3_0 , Clock2 -> e_trans_S3_1)
+Expression exp_and_openLock_and_down_extend = Intersection(Clock1 -> exp_and_down_extend , Clock2 -> openLock)
+Expression e_trans_S3_2 = Intersection(Clock1 -> exp_and_openLock_and_down_extend , Clock2 -> q_S4)
+Expression e_Trans_S3_2 = Union(Clock1 -> e_Trans_S3_1 , Clock2 -> e_trans_S3_2)
+Expression e_q_S4 = DelayFor(DelayForClockToDelay -> Iq_S4 , DelayForClockForCounting -> Iq_S4 , DelayForDelay -> one)
+Expression e_Q_4 = Union(Clock1 -> e_Q_3 , Clock2 -> q_S4)
+Expression e_Trans_4 = Union(Clock1 -> e_Trans_3 , Clock2 -> Iq_S4)
+Expression exp_and_up_retractLock = Intersection(Clock1 -> retractLock , Clock2 -> up)
+Expression exp_and_openLock_and_up_retractLock = Intersection(Clock1 -> exp_and_up_retractLock , Clock2 -> openLock)
+Expression e_trans_S4_0 = Intersection(Clock1 -> exp_and_openLock_and_up_retractLock , Clock2 -> q_S3)
+Expression exp_and_down_retractLock = Intersection(Clock1 -> retractLock , Clock2 -> down)
+Expression exp_and_openLock_and_down_retractLock = Intersection(Clock1 -> exp_and_down_retractLock , Clock2 -> openLock)
+Expression e_trans_S4_1 = Intersection(Clock1 -> exp_and_openLock_and_down_retractLock , Clock2 -> q_S5)
+Expression e_Trans_S4_1 = Union(Clock1 -> e_trans_S4_0 , Clock2 -> e_trans_S4_1)
+Expression e_q_S5 = DelayFor(DelayForClockToDelay -> Iq_S5 , DelayForClockForCounting -> Iq_S5 , DelayForDelay -> one)
+Expression e_Q_5 = Union(Clock1 -> e_Q_4 , Clock2 -> q_S5)
+Expression e_Trans_5 = Union(Clock1 -> e_Trans_4 , Clock2 -> Iq_S5)
+Expression exp_and_close_and_up_retractLock = Intersection(Clock1 -> exp_and_up_retractLock , Clock2 -> close)
+Expression e_trans_S5_0 = Intersection(Clock1 -> exp_and_close_and_up_retractLock , Clock2 -> q_S4)
+Expression exp_and_open_and_down_retractLock = Intersection(Clock1 -> exp_and_down_retractLock , Clock2 -> open)
+Expression exp_or_and_close_and_up_retractLock_and_open_and_down_retractLock = Union(Clock1 -> exp_and_close_and_up_retractLock , Clock2 -> exp_and_open_and_down_retractLock)
+Expression e_trans_S5_1 = Intersection(Clock1 -> exp_or_and_close_and_up_retractLock_and_open_and_down_retractLock , Clock2 -> q_S5)
+Expression e_Trans_S5_1 = Union(Clock1 -> e_trans_S5_0 , Clock2 -> e_trans_S5_1)
+Expression e_trans_S5_2 = Intersection(Clock1 -> exp_and_open_and_down_retractLock , Clock2 -> q_S6)
+Expression e_Trans_S5_2 = Union(Clock1 -> e_Trans_S5_1 , Clock2 -> e_trans_S5_2)
+Expression e_q_S6 = DelayFor(DelayForClockToDelay -> Iq_S6 , DelayForClockForCounting -> Iq_S6 , DelayForDelay -> one)
+Expression e_Q_6 = Union(Clock1 -> e_Q_5 , Clock2 -> q_S6)
+Expression e_Trans_6 = Union(Clock1 -> e_Trans_5 , Clock2 -> Iq_S6)
+Expression exp_and_closeLock_and_up_retractLock = Intersection(Clock1 -> exp_and_up_retractLock , Clock2 -> closeLock)
+Expression e_trans_S6_0 = Intersection(Clock1 -> exp_and_closeLock_and_up_retractLock , Clock2 -> q_S5)
+Expression e_trans_S6_1 = Intersection(Clock1 -> exp_and_closeLock_and_up_retractLock , Clock2 -> q_S6)
+Expression e_Trans_S6_1 = Union(Clock1 -> e_trans_S6_0 , Clock2 -> e_trans_S6_1)
+Relation r0[Precedes](LeftClock->Iq_init , RightClock->e_q_init)
+Relation r1[NonStrictPrecedes](LeftClock->q_init , RightClock->Iq_init)
+Relation r2[Coincides](Clock1->Iq_init , Clock2->e_Trans_init_1)
+Relation r3[Exclusion](Clock1->q_init , Clock2->q_S1)
+Relation r4[Exclusion](Clock1->q_init , Clock2->q_S2)
+Relation r5[Exclusion](Clock1->q_init , Clock2->q_S3)
+Relation r6[Exclusion](Clock1->q_init , Clock2->q_S4)
+Relation r7[Exclusion](Clock1->q_init , Clock2->q_S5)
+Relation r8[Exclusion](Clock1->q_init , Clock2->q_S6)
+Relation r9[Precedes](LeftClock->Iq_S1 , RightClock->q_S1)
+Relation r10[NonStrictPrecedes](LeftClock->q_S1 , RightClock->e_q_S1)
+Relation r11[Coincides](Clock1->Iq_S1 , Clock2->e_Trans_S1_2)
+Relation r12[Exclusion](Clock1->q_S1 , Clock2->q_S2)
+Relation r13[Exclusion](Clock1->q_S1 , Clock2->q_S3)
+Relation r14[Exclusion](Clock1->q_S1 , Clock2->q_S4)
+Relation r15[Exclusion](Clock1->q_S1 , Clock2->q_S5)
+Relation r16[Exclusion](Clock1->q_S1 , Clock2->q_S6)
+Relation r17[Precedes](LeftClock->Iq_S2 , RightClock->q_S2)
+Relation r18[NonStrictPrecedes](LeftClock->q_S2 , RightClock->e_q_S2)
+Relation r19[Coincides](Clock1->Iq_S2 , Clock2->e_Trans_S2_1)
+Relation r20[Exclusion](Clock1->q_S2 , Clock2->q_S3)
+Relation r21[Exclusion](Clock1->q_S2 , Clock2->q_S4)
+Relation r22[Exclusion](Clock1->q_S2 , Clock2->q_S5)
+Relation r23[Exclusion](Clock1->q_S2 , Clock2->q_S6)
+Relation r24[Precedes](LeftClock->Iq_S3 , RightClock->q_S3)
+Relation r25[NonStrictPrecedes](LeftClock->q_S3 , RightClock->e_q_S3)
+Relation r26[Coincides](Clock1->Iq_S3 , Clock2->e_Trans_S3_2)
+Relation r27[Exclusion](Clock1->q_S3 , Clock2->q_S4)
+Relation r28[Exclusion](Clock1->q_S3 , Clock2->q_S5)
+Relation r29[Exclusion](Clock1->q_S3 , Clock2->q_S6)
+Relation r30[Precedes](LeftClock->Iq_S4 , RightClock->q_S4)
+Relation r31[NonStrictPrecedes](LeftClock->q_S4 , RightClock->e_q_S4)
+Relation r32[Coincides](Clock1->Iq_S4 , Clock2->e_Trans_S4_1)
+Relation r33[Exclusion](Clock1->q_S4 , Clock2->q_S5)
+Relation r34[Exclusion](Clock1->q_S4 , Clock2->q_S6)
+Relation r35[Precedes](LeftClock->Iq_S5 , RightClock->q_S5)
+Relation r36[NonStrictPrecedes](LeftClock->q_S5 , RightClock->e_q_S5)
+Relation r37[Coincides](Clock1->Iq_S5 , Clock2->e_Trans_S5_2)
+Relation r38[Exclusion](Clock1->q_S5 , Clock2->q_S6)
+Relation r39[Precedes](LeftClock->Iq_S6 , RightClock->q_S6)
+Relation r40[NonStrictPrecedes](LeftClock->q_S6 , RightClock->e_q_S6)
+Relation r41[Coincides](Clock1->Iq_S6 , Clock2->e_Trans_S6_1)
+Relation r42[Coincides](Clock1->e_Q_6 , Clock2->global)
+Relation r43[Coincides](Clock1->e_Trans_6 , Clock2->global)
+
+        
+        Relation globalR0[Coincides](Clock1 -> global, Clock2 -> glb0)
+        Relation globalR1[Coincides](Clock1 -> global, Clock2 -> glb1)
+        Relation globalR2[Coincides](Clock1 -> global, Clock2 -> glb2)
+        
+        Relation exclusionR0[Exclusion](Clock1 -> close, Clock2 -> closeLock)
+        Relation exclusionR1[Exclusion](Clock1 -> open, Clock2 -> openLock)
+        Relation exclusionR2[Exclusion](Clock1 -> extend, Clock2 -> extendLock)
+        Relation exclusionR3[Exclusion](Clock1 -> retract, Clock2 -> retractLock)
+        Relation exclusionR4[Exclusion](Clock1 -> down, Clock2 -> up)
+        Relation exclusionR5[Exclusion](Clock1 -> closeAct, Clock2 -> openAct)
+        Relation exclusionR6[Exclusion](Clock1 -> extendAct, Clock2 -> retractAct)
+        
+        
+        Clock down
+        Clock up
+        Clock global
+        Clock closeLock
+        Clock openLock
+        Clock extendLock
+        Clock retractLock
+        Clock close
+        Clock open
+        Clock extend
+        Clock retract
+        Clock q_init
+        Clock q_S1
+        Clock q_S2
+        Clock q_S3
+        Clock q_S4
+        Clock q_S5
+        Clock q_S6
+        Clock Iq_init
+        Clock Iq_S1
+        Clock Iq_S2
+        Clock Iq_S3
+        Clock Iq_S4
+        Clock Iq_S5
+        Clock Iq_S6
+        
+        
+        
+    }
+}

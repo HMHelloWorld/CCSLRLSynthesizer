@@ -1,0 +1,16 @@
+<CCSLConfigure>
+    <relations>
+        <relation type='1' leftClock="" rightClock="e2"/>
+        <relation type='-1' leftClock="c1" rightClock="c5"/>
+        <relation type='0' leftClock="" rightClock="c6"/>
+        <relation type='1' leftClock="e3" rightClock="c5"/>
+        <relation type='1' leftClock="c5" rightClock=""/>
+    </relations>
+    <expressions>
+        <expression name="e0" type='1' leftClock="c0" rightClock="c1" addition=""/>
+        <!--<expression name="e1" type='0' leftClock="c7" rightClock="c8" addition=""/>-->
+        <expression name="e2" type='-1' leftClock="c3" rightClock="c4" addition=""/>
+        <expression name="e3" type='3' leftClock="" rightClock="c8" addition=""/>
+        <expression name="e4" type='2' leftClock="c7" rightClock="" addition=""/>
+    </expressions>
+</CCSLConfigure>

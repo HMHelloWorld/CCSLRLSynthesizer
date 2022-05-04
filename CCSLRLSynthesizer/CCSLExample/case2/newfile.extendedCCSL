@@ -1,0 +1,21 @@
+/*
+ * CCSL specification
+ * @author:  huming
+ * date :  星期二 十月 16 2018  01:27:22 CST 
+ */
+ClockConstraintSystem newfile {
+    imports {
+        // import statements
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0; 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
+
+    }
+    entryBlock main
+    Block main {
+		Expression e0 = Union(Clock1->c0,Clock2->c1)
+		Relation r0[Coincides](Clock1->c2,Clock2->e0)
+		Clock c0
+        Clock c1
+        Clock c2
+	}
+}

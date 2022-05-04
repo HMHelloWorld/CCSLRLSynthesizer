@@ -1,0 +1,24 @@
+/*
+ * CCSL specification
+ * @author:  huming
+ * date :  星期二 十月 16 2018  01:27:22 CST 
+ */
+ClockConstraintSystem newfile {
+    imports {
+        // import statements
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/kernel.ccslLib" as lib0; 
+		import "platform:/plugin/fr.inria.aoste.timesquare.ccslkernel.model/ccsllibrary/CCSL.ccslLib" as lib1; 
+
+    }
+    entryBlock main
+    Block main {
+		Expression e = Intersection(Clock1->a,Clock2->b)
+		Relation r0[Alternates](AlternatesLeftClock -> c, AlternatesRightClock -> d)
+        Relation r1[NonStrictPrecedes](LeftClock -> a, RightClock -> b)
+		Relation r2[SubClock](LeftClock -> e, RightClock -> c)
+		Clock a
+		Clock b
+		Clock c
+		Clock d
+	}
+}

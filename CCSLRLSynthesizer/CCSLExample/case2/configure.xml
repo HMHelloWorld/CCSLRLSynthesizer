@@ -1,0 +1,8 @@
+<CCSLConfigure>
+    <constraints>
+        <constraint type='0' leftClock="c2" rightClock="e0"/>
+    </constraints>
+    <expressions>
+        <expression name="e0" type='0' leftClock="c0" rightClock="c1" addition=""/>
+    </expressions>
+</CCSLConfigure>

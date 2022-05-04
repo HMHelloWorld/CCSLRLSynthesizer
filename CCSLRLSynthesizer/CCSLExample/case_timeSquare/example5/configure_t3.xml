@@ -1,0 +1,7 @@
+<CCSLConfigure>
+    <relations>
+        <relation type='2' leftClock="c0" rightClock=""/>
+    </relations>
+    <expressions>
+    </expressions>
+</CCSLConfigure>

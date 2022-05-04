@@ -1,0 +1,19 @@
+<CCSLConfigure>
+    <relations>
+        <relation type='3' leftClock="r" rightClock="g"/>
+        <relation type='-1' leftClock="r" rightClock="y"/>
+        <relation type='-1' leftClock="g" rightClock="y"/>
+        <relation type='3' leftClock="go" rightClock="stop"/>
+        <relation type='3' leftClock="toGo" rightClock=""/>
+        <relation type='4' leftClock="go" rightClock="e0"/>
+        <relation type='4' leftClock="" rightClock="toStop"/>
+        <relation type='-1' leftClock="toGo" rightClock="go"/>
+    </relations>
+    <expressions>
+        <expression name="crossStop" type='-1' leftClock="r" rightClock="y" addition=""/>
+        <expression name="frontStop" type='0' leftClock="isPeople" rightClock="isCar" addition=""/>
+        <expression name="needStop" type='0' leftClock="crossStop" rightClock="frontStop" addition=""/>
+        <expression name="e0" type='0' leftClock="toGo" rightClock="" addition=""/>
+        <expression name="e1" type='0' leftClock="stop" rightClock="needStop" addition=""/>
+    </expressions>
+</CCSLConfigure>
