@@ -63,52 +63,14 @@ def main(argv):
         print 'main.py -clocklist <clocklistfile> -spec <specfile> -trace_directory <trace_directory>'
         return
 
-            # if isTest:
-    # goldenFile = "./CCSLExample/case_timeSquare/example10/golden_t1"
-    # goldenList = CCSLPaser.readGoldenList(goldenFile)
-    # clockListPath = "./CCSLExample/case_timeSquare/example10/clocklist"
-    # specPath = "./CCSLExample/case_timeSquare/example10/configure_t1.xml"
-    # tracePath = "./CCSLExample/case_timeSquare/example10/trace"
-
-    goldenFile = "./CCSLExample/WSP/golden_t1"
-    goldenList = CCSLPaser.readGoldenList(goldenFile)
-    clockListPath = "./CCSLExample/WSP/clocklist"
-    specPath = "./CCSLExample/WSP/configure_t1.xml"
-    tracePath = "./CCSLExample/WSP/trace"
-
-    # goldenFile = "./CCSLBenchmark/Spec2/golden_spec2_2"
-    # goldenList = CCSLPaser.readGoldenList(goldenFile)
-    # clockListPath = "./CCSLBenchmark/Spec2/clocklist"
-    # specPath = "./CCSLBenchmark/Spec2/Spec2_2.xml"
-    # tracePath = "./CCSLBenchmark/Spec2/trace"
 
     clockLst = CCSLPaser.readClockList(clockListPath)
     spec = CCSLPaser.readCCSLConfigureXML(specPath)
     spec.refreshClockList(clockLst)
     traces = CCSLPaser.readCCSLTraceFile(tracePath, len(clockLst), traceLen, traceNum)
-    round = 1000
+    # round = 1000
     epsilon = 0.9
-    # goldenList = [0]
-    # goldenList = [0, 1, 1, 4, 1, 3, 1, 3, 4, 25, 7, 7, 11, 13, 23, 18, 19]
-    # goldenList = [0, 2, 1]  # case 1 t2  spec1_1
-    # goldenList = [4, 0, 2]  # case 1 t4  spec1_2
-    # goldenList = [0, 4, 1, 1, 4, 1, 1, 1, 1, 1] #case 5 t1  spec2_1
-    # goldenList = [7, 12, 0, 4, 12, 13, 14, 11, 0, 14] #case 5 t3
-    # goldenList = [1, 0, 1, 1, 1, 1, 13, 11, 12, 3]  # case 5 t4  spec2_2
-    # goldenList = [0, 0, 1, 1, 1, 4, 1, 4, 3, 1, 3, 3, 4, 1, 1, 1] #case6 t1
-    # goldenList =[4, 21, 23, 7, 7, 6, 10, 10, 11, 11, 12, 17, 14, 25, 18, 19]
-    # goldenList = [0, 1, 1, 4, 1, 3, 1, 3, 4, 25, 7, 7, 11, 13, 23, 18, 19] #case6 t3  spec3_1
-    # goldenList = [1, 1, 4, 1, 4, 3, 1, 3, 3, 4, 1, 20, 7, 7, 18, 18] #case6 t4  spec3_2
-    # goldenList = [1, 1, 3, 2] #new_case_1 t2  spec4_1
-    # goldenList =[7, 8, 1, 4, 9, 5, 12] #new_case_1 t3  spec4_2
-    # goldenList = [1,0,4] #case_base t1
-    # goldenList = [1, 1, 0] #case_base t3
-    # goldenList =[1, 2, 0, 3, 3, 3, 3, 3, 3, 1, 2, 0, 3, 3, 3, 3, 3, 1, 2, 0, 3, 3, 3, 3, 1, 2, 0, 3, 3, 3, 1, 2, 0, 3, 3, 1, 2, 0, 3, 1, 2, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3]
-    # goldenList = [1, 0, 1, 1, 1] #LandGear t1
-    # goldenList = [1, 3, 3, 3, 3, 0] #LandGear t2
-    # goldenList = [41, 1, 3, 3, 3, 3, 0] #LandGear t3
-    # goldenList = [7, 10, 8, 1] #LandGear t4
-    # print(spec)
+
     rightCount = 0
     t = 0
     for i in range(times):
